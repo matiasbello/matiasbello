@@ -1,0 +1,47 @@
+<ng-container *ngIf="rol === 'conductor'">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Bienvenido {{username}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item class="rotate-hor-center" *ngFor="let lis of listaViajes"
+        [routerLink]="['../../viaje/', lis.id]">
+        <ion-label>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="centrado">
+      <ion-button (click)="progViaje()">
+        Programar viaje
+      </ion-button>
+    </div>
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="rol === 'pasajero'">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Viajes disponibles</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list *ngIf="listaViajes.length > 0">
+      <ion-item class="rotate-hor-center" *ngFor="let lis of listaViajes"
+      [routerLink]="['../../viaje/', lis.id]">
+        <ion-label>
+          <div class="color">
+            <p id="destino">Destino: {{lis.destino}}</p>
+            <p>Hora salida: {{lis.hora}}</p>
+            <p id="costo">Costo: {{lis.costo}}</p>
+            <p id="costo">Método de pago preferente: {{lis.pago | titlecase}}</p>
+          </div>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="listaViajes.length === 0">
+      </div>
+    </ion-list>
+  </ion-content>
+</ng-container>

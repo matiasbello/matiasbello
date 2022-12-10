@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Perfil de {{usuario.username}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ng-container *ngIf="usuario.rol === 'pasajero'">
+  <ion-content [fullscreen]="true">
+    <ion-card class="ion-margin">
+      
+    <ion-row class="ion-padding">
+      <h2>Datos del usuario</h2>
+      <ion-col size="12">Nombre de usuario: {{usuario.username}}</ion-col>
+      <ion-col size="12">Nombre: {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}}</ion-col>
+      <ion-col size="12">Correo: {{usuario.correo}}</ion-col>
+      <ion-col size="12">Rol: {{usuario.rol | titlecase}}</ion-col>
+      <br><br><br>
+      <ion-col size="12"></ion-col>
+    </ion-row>
+  </ion-card>
+  <div class="centrado">
+    <ion-button (click)="cerrarSesion()" shape="round">
+      Cerrar Sesión
+    </ion-button>
+  </div>
+  </ion-content>
+</ng-container>
+
+
+<ng-container *ngIf="usuario.rol === 'conductor'">
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-grid fixed class="ion-padding">
+        <ion-row>
+          <h2>Información del usuario actual</h2>
+          <ion-col size="12">Nombre de usuario: {{usuario.username}}</ion-col>
+          <ion-col size="12">Nombre: {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}}</ion-col>
+          <ion-col size="12">Correo: {{usuario.correo}}</ion-col>
+          <ion-col size="12">Rol: {{usuario.rol | titlecase}}</ion-col>
+
+          <h3>Auto del propietario</h3>
+          <ion-col size="12">Marca: {{usuario.auto.marca}}</ion-col>
+          <ion-col size="12">Modelo: {{usuario.auto.modelo}}</ion-col>
+          <ion-col size="12">N° de asientos: {{usuario.auto.numAsientos}}</ion-col>
+          <ion-col size="12">Color: {{usuario.auto.color}}</ion-col>
+          <br><br><br>
+          <ion-col size="12"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-button (click)="cerrarSesion()" expand="block" fill="clear" shape="round">
+      Cerrar Sesión
+    </ion-button>
+  </ion-content>
+</ng-container>

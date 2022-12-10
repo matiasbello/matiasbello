@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Viaje actual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="rol === 'conductor'">
+  <h5 class="ion-margin">Información del viaje</h5>
+  <ion-content>
+    <ion-card>
+      <ion-item>
+        <ion-label >Destino: {{destino}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Costo: ${{costo}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Método de pago preferente: {{pago}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Comentario: {{comentario}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha salida: {{fecha}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Hora salida: {{hora}}</ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="pasajeros">
+      <h5 class="ion-margin">Pasajeros</h5>
+      <ion-list *ngFor="let i of pasajeros">
+        
+        <ion-item>
+          <ion-label>
+            <h2>Username: {{i.username}}</h2>
+            <h2>Nombre: {{i.nombre}} {{i.apaterno}} {{i.amaterno}}</h2>
+            <h2>Correo: {{i.correo}}</h2>
+          </ion-label>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card>
+
+    <h5 *ngIf="pasajeros.length === 0" class="ion-margin">Ausencia de pasajeros, lo sentimos.</h5>
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="rol === 'pasajero'">
+  <ion-content>
+    <ion-card>
+      <h5 class="ion-margin">Destino: {{destino}}</h5>
+    </ion-card>
+  </ion-content>
+</ng-container>

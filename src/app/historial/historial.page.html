@@ -1,0 +1,62 @@
+<ng-container *ngIf="rol === 'conductor'">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="tabs/tab2"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Pasajeros recientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let pas of pasajeros" [routerLink]="['../pasajero/', pas.id]">
+
+        <ion-avatar slot="start">
+          <img src="../assets/img/pasajeros/{{pas.imagen}}" />
+        </ion-avatar>
+
+        <ion-label>
+          <p id="hora">Salida: {{pas.hora}}</p>
+          <h2>{{pas.nombre}}</h2>
+          <p>Destino: {{pas.destino}}</p>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+
+    <div class="centrado">
+      <ion-button (click)="proViaje()">
+        Programar viaje
+      </ion-button>
+    </div>
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="rol === 'pasajero'">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Conductores recientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let con of conductores" [routerLink]="['../pasajero/', con.id]">
+
+        <ion-avatar slot="start">
+          <img src="../assets/img/conductores/{{con.imagen}}" />
+        </ion-avatar>
+
+        <ion-label>
+          <p id="hora">Salida: {{con.horaSalida}}</p>
+          <h2>{{con.nombre}}</h2>
+          <p>Destino: {{con.destino}}</p>
+          <p>Auto: {{con.auto}} - {{con.color}}</p>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-container>

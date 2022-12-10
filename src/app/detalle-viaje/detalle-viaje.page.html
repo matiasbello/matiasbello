@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h4 class="ion-margin">Datos del viaje</h4>
+  <ion-card class="ion-padding">
+    <h6>Usuario: {{username}}</h6>
+    <h6>Conductor: {{nombre}} {{apellido_p}} {{apellido_m}}</h6>
+   
+    <h6>Valor: ${{costo}}</h6>
+    <h6>Método: {{pago | titlecase }}</h6>
+    <h6>Comentario: {{comentario}}</h6>
+    <h6>Pasajeros: </h6>
+  </ion-card>
+  
+  <ion-button (click)="tomarViaje()" expand="block" fill="clear" shape="round">
+    Tomar Viaje
+  </ion-button>
+</ion-content>

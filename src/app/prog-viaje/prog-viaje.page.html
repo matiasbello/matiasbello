@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Programación del viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form #formViaje="ngForm" id="formu" (ngSubmit)="submit()">
+      <h5 class="ion-margin">Selecciona el destino</h5>
+      <div class="envoltura">
+        <div id="idGeocoder" #geocoder></div>
+        <div id="idMap" #mapa class="ion-margin mapa"></div>
+      </div>
+
+      <h5>Selecciona hora y fecha de salida</h5>
+      <ion-item>
+        <ion-datetime class="ion-margin" (ionChange)="getFecha($event)" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"><span>Coste por pasajero</span>
+          <ion-text color="danger"> *</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="viaje.costo" name="costo" required type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select class="span" [(ngModel)]="viaje.pago" name="pago" placeholder="Método de pago preferente" required>
+          <ion-select-option value="efectivo">Efectivo</ion-select-option>
+          <ion-select-option value="transferencia">Transferencia</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"><span>Comentario(opcional)</span>
+          <ion-text color="danger"></ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="viaje.comentario" name="comentario" type="text"></ion-input>
+      </ion-item>
+
+      <ion-button block color="primary" class="btn ion-text-center" type="submit" [disabled]="formViaje.invalid"
+        required>
+        Programar viaje
+      </ion-button>
+    </form>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recuperación de contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card ion-text-center>
+    <ion-item>
+      <ion-label position="floating">Ingresa tu nueva contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="contrasena" name="contrasena" placeholder="Contraseña..."></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirmar contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="conContrasena" name="conContrasena" placeholder="Confirmación contraseña..."></ion-input>
+    </ion-item>
+    <ion-button (click)="recuperar()" expand="block" fill="clear" shape="round">
+      Recuperar contraseña
+    </ion-button>
+  </ion-card>
+</ion-content>
